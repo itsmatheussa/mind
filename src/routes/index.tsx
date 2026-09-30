@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowUpRight, ImageDown, Instagram, Sparkles, TrendingUp } from "lucide-react";
 import { ScrollScene } from "@/components/ScrollScene";
 import { ProfileInsights } from "@/components/ProfileInsights";
-import avatar from "@/assets/profile.png.asset.json";
+import avatar from "@/assets/profile.png";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -45,8 +45,8 @@ function Bio() {
         </h1>
         <p className="mt-2 text-xs uppercase tracking-[0.35em] text-accent">@themindpower.br</p>
         <p className="animate-rise mt-5 max-w-sm text-sm leading-relaxed text-muted-foreground">
-          Mentalidade, disciplina e foco em formato anime. Conteúdo diário para quem decidiu virar a
-          própria história — e espaço para você crescer junto com a página.
+          Conteúdo diário para quem decidiu mudar a
+          própria história e para você crescer junto com a página.
         </p>
 
         <div className="mt-9 flex w-full max-w-sm flex-col gap-4">
