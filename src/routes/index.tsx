@@ -2,7 +2,6 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowUpRight, ImageDown, Instagram, Sparkles, TrendingUp } from "lucide-react";
 import { ScrollScene } from "@/components/ScrollScene";
 import { ProfileInsights } from "@/components/ProfileInsights";
-import avatar from "@/assets/profile.png";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -34,7 +33,7 @@ function Bio() {
 
       <section className="flex min-h-[92vh] flex-col items-center justify-center px-6 pb-16 pt-24 text-center">
         <img
-          src={avatar.url}
+          src="/images/profile.png"
           alt="THE MIND POWER"
           width={816}
           height={816}
