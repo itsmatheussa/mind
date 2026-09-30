@@ -1,0 +1,322 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * THE MIND POWER — design system (anime black / warm gold)
+ * All colors in oklch. Use semantic tokens only in components.
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+  --color-glow: var(--glow);
+  --color-ink: var(--ink);
+  --font-display: "Zen Dots", system-ui, sans-serif;
+  --font-sans: "Sora", system-ui, sans-serif;
+}
+
+:root {
+  --radius: 1rem;
+  --background: oklch(0.08 0.008 75);
+  --foreground: oklch(0.96 0.015 86);
+  --card: oklch(0.14 0.015 75 / 78%);
+  --card-foreground: oklch(0.96 0.015 86);
+  --popover: oklch(0.12 0.012 75);
+  --popover-foreground: oklch(0.96 0.015 86);
+  --primary: oklch(0.76 0.15 78);
+  --primary-foreground: oklch(0.11 0.012 75);
+  --secondary: oklch(0.2 0.02 75);
+  --secondary-foreground: oklch(0.96 0.015 86);
+  --muted: oklch(0.18 0.018 75);
+  --muted-foreground: oklch(0.72 0.035 82);
+  --accent: oklch(0.84 0.13 86);
+  --accent-foreground: oklch(0.12 0.012 75);
+  --destructive: oklch(0.62 0.24 22);
+  --destructive-foreground: oklch(0.99 0 0);
+  --border: oklch(0.78 0.13 80 / 25%);
+  --input: oklch(0.78 0.13 80 / 32%);
+  --ring: oklch(0.76 0.15 78);
+  --glow: oklch(0.84 0.14 84);
+  --ink: oklch(0.055 0.006 75);
+
+  --gradient-hero: linear-gradient(
+    180deg,
+    oklch(0.07 0.008 75 / 5%) 0%,
+    oklch(0.07 0.008 75 / 58%) 45%,
+    oklch(0.07 0.008 75 / 98%) 100%
+  );
+  --gradient-neon: linear-gradient(135deg, var(--primary), var(--accent));
+  --gradient-card: linear-gradient(
+    160deg,
+    oklch(0.23 0.035 78 / 76%),
+    oklch(0.105 0.012 75 / 88%)
+  );
+  --shadow-neon: 0 0 0 1px oklch(0.82 0.14 82 / 32%), 0 12px 38px -16px oklch(0.78 0.15 78 / 58%);
+  --shadow-soft: 0 24px 60px -30px oklch(0.02 0.004 75 / 98%);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    letter-spacing: 0.02em;
+  }
+}
+
+@utility surface-card {
+  background-image: var(--gradient-card);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-soft);
+  backdrop-filter: blur(14px);
+}
+
+@utility neon-text {
+  background-image: var(--gradient-neon);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 0 10px color-mix(in oklab, var(--color-accent) 28%, transparent));
+}
+
+@utility neon-btn {
+  background-image: var(--gradient-neon);
+  color: var(--color-primary-foreground);
+  box-shadow: var(--shadow-neon);
+  transition:
+    transform 0.25s ease,
+    filter 0.25s ease;
+  &:hover {
+    filter: brightness(1.1);
+  }
+  &:active {
+    transform: scale(0.97);
+  }
+}
+
+@utility ghost-btn {
+  background-color: color-mix(in oklab, var(--color-foreground) 6%, transparent);
+  border: 1px solid var(--color-border);
+  transition:
+    background-color 0.25s ease,
+    transform 0.25s ease;
+  &:hover {
+    background-color: color-mix(in oklab, var(--color-accent) 12%, transparent);
+  }
+  &:active {
+    transform: scale(0.97);
+  }
+}
+
+@utility hero-veil {
+  background-image: var(--gradient-hero);
+}
+
+.star-scene {
+  isolation: isolate;
+}
+
+.star-field {
+  position: absolute;
+  inset: 0;
+  height: 200%;
+  background-repeat: repeat;
+  will-change: transform;
+}
+
+.star-field-far {
+  opacity: 0.38;
+  background-image:
+    radial-gradient(circle, color-mix(in oklab, var(--primary) 72%, transparent) 0 1px, transparent 1.5px),
+    radial-gradient(circle, color-mix(in oklab, var(--accent) 52%, transparent) 0 1px, transparent 1.6px);
+  background-size: 83px 97px, 127px 149px;
+  background-position: 14px 31px, 68px 19px;
+  animation: stars-rise 34s linear infinite;
+}
+
+.star-field-mid {
+  opacity: 0.62;
+  background-image:
+    radial-gradient(circle, color-mix(in oklab, var(--primary) 88%, transparent) 0 1.5px, transparent 2.2px),
+    radial-gradient(circle, color-mix(in oklab, var(--accent) 65%, transparent) 0 1px, transparent 2px);
+  background-size: 151px 173px, 211px 193px;
+  background-position: 37px 73px, 102px 41px;
+  animation: stars-rise 23s linear infinite;
+}
+
+.star-field-near {
+  opacity: 0.8;
+  background-image: radial-gradient(
+    circle,
+    color-mix(in oklab, var(--primary) 95%, transparent) 0 2px,
+    color-mix(in oklab, var(--primary) 22%, transparent) 2.5px,
+    transparent 5px
+  );
+  background-size: 239px 281px;
+  background-position: 71px 113px;
+  animation: stars-rise 16s linear infinite;
+}
+
+.golden-haze {
+  position: absolute;
+  width: min(58vw, 34rem);
+  aspect-ratio: 1;
+  opacity: 0.24;
+  filter: blur(42px);
+  background: radial-gradient(circle, color-mix(in oklab, var(--primary) 35%, transparent), transparent 68%);
+  animation: golden-breathe 8s ease-in-out infinite;
+}
+
+.golden-haze-left {
+  left: -22rem;
+  top: 8%;
+}
+
+.golden-haze-right {
+  right: -20rem;
+  bottom: 3%;
+  animation-delay: -4s;
+}
+
+.star-sheen {
+  position: absolute;
+  inset: 0;
+  opacity: 0.28;
+  background: linear-gradient(112deg, transparent 32%, color-mix(in oklab, var(--primary) 12%, transparent) 50%, transparent 68%);
+  animation: sheen-drift 12s ease-in-out infinite;
+}
+
+@keyframes stars-rise {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(0, -50%, 0);
+  }
+}
+
+@keyframes golden-breathe {
+  0%,
+  100% {
+    opacity: 0.16;
+    transform: scale(0.92);
+  }
+  50% {
+    opacity: 0.3;
+    transform: scale(1.08);
+  }
+}
+
+@keyframes sheen-drift {
+  0%,
+  100% {
+    transform: translateX(-18%);
+    opacity: 0.16;
+  }
+  50% {
+    transform: translateX(18%);
+    opacity: 0.34;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .star-field,
+  .golden-haze,
+  .star-sheen {
+    animation: none;
+  }
+}
+
+@keyframes float-slow {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(0, -18px, 0) scale(1.05);
+  }
+}
+
+@keyframes pulse-glow {
+  0%,
+  100% {
+    opacity: 0.45;
+  }
+  50% {
+    opacity: 0.9;
+  }
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes drift {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-40px);
+  }
+}
+
+@utility animate-float-slow {
+  animation: float-slow 9s ease-in-out infinite;
+}
+
+@utility animate-pulse-glow {
+  animation: pulse-glow 4s ease-in-out infinite;
+}
+
+@utility animate-rise {
+  animation: rise-in 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
