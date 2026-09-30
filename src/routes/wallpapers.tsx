@@ -4,10 +4,6 @@ import { ArrowLeft, Check, FolderOpen, Smartphone } from "lucide-react";
 import { ScrollScene } from "@/components/ScrollScene";
 import { PixCheckout } from "@/components/PixCheckout";
 import { Button } from "@/components/ui/button";
-import wallpaper1 from "@/assets/wallpaper-1.png.asset.json";
-import wallpaper2 from "@/assets/wallpaper-2.png.asset.json";
-import wallpaper3 from "@/assets/wallpaper-3.png.asset.json";
-import wallpaper4 from "@/assets/wallpaper-4.png.asset.json";
 
 export const Route = createFileRoute("/wallpapers")({
   head: () => ({
@@ -59,10 +55,16 @@ function Wallpapers() {
       </header>
 
       <div className="animate-rise mx-auto mt-8 grid w-full max-w-sm grid-cols-2 gap-2 overflow-hidden rounded-2xl border border-border bg-card p-2 shadow-[var(--shadow-neon)]">
-        {[wallpaper1, wallpaper2, wallpaper3, wallpaper4].map((wallpaper, index) => (
+          {[
+            "/images/wallpaper-1.png",
+            "/images/wallpaper-2.png",
+            "/images/wallpaper-3.png",
+            "/images/wallpaper-4.png",
+          ].map((wallpaper, index) => (
+
           <img
-            key={wallpaper.asset_id}
-            src={wallpaper.url}
+            key={wallpaper}
+            src={wallpaper}
             alt={`Wallpaper anime ${index + 1}`}
             width={index === 3 ? 795 : 658}
             height={index === 3 ? 842 : 845}
