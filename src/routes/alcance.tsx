@@ -50,7 +50,7 @@ const PLANS: Plan[] = [
     tagline: "Seu conteúdo nos stories da página, sem limite.",
     perks: [
       "Reposts ilimitados por 30 dias",
-      "Marcação do seu @ em todos os stories",
+      "Reposte quantos posts quiser",
       "Prioridade na fila de publicação",
     ],
     qty: false,
